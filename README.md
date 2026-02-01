@@ -1,6 +1,6 @@
-# Seller Account Management
+# InvoiceHub
 
-A small Python project to import, process and generate invoices/seller reports for marketplaces (Amazon, Flipkart, etc.). Provides CLI and web UI components and utilities to read orders, create invoices, and save outputs to Excel/JSON.
+InvoiceHub is a small Python project to import, process and generate invoices and seller reports for marketplaces (Amazon, Flipkart, etc.). It provides CLI and web UI components and utilities to read orders, create invoices, and save outputs to Excel/JSON.
 
 ## Features
 - Import orders from DB or local JSON/Excel inputs
