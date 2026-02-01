@@ -1,0 +1,38 @@
+.loaddder {
+	display: inline-block;
+	border-radius: 100px;
+	border-style: none;
+	background:  url(/static/images/Loading_Spinner.gif) no-repeat
+		center;
+	border-top-color: #8dc640;
+	border-left-color: #00a651;
+	border-right-color: #8dc640;
+	border-bottom-color: #00a651;
+	text-align: center;
+	vertical-align: middle;
+	position: fixed;
+	top: 40%;
+	left: 45%;
+	animation: rotate0 1s linear infinite;
+	-webkit-animation: rotate0 1s linear infinite;
+	border-width: 10px;
+	width: 120px;
+	height: 120px;
+}
+
+.spinner {
+    border: 16px solid #fbfbfb;
+    border-top: 16px solid #bd5d38;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    animation: spin 1.75s linear infinite;
+	position: fixed;
+	top: 40%;
+	left: 45%;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

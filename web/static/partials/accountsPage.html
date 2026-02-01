@@ -1,0 +1,121 @@
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="account">
+    <div class="my-auto">
+        <div class="form-row">
+            <div class="form-group col-md5">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false" style="background-color: #bd5d38;color: #ffffffcc;cursor: pointer; border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;">Year
+                        </button>
+                        <div class="dropdown-menu">
+                            <a ng-repeat="year in years" class="dropdown-item" ng-click="selectYear(year)"
+                               style="cursor:pointer">{{year}}</a>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" value="{{selectedYear}}" disabled>
+                </div>
+            </div>
+            <div class="form-group col-md-5">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false" style="background-color: #bd5d38;color: #ffffffcc;cursor: pointer; border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;">Month
+                        </button>
+                        <div class="dropdown-menu">
+                            <a ng-repeat="(key, month) in months" class="dropdown-item" ng-click="selectMonth(key)"
+                               style="cursor:pointer">{{key}}</a>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" value="{{selectedMonth}}" disabled>
+                </div>
+            </div>
+            <div class="form-group col-md-2">
+                <div class="input-group mb-3">
+                    <button
+                            ng-click="getOrdersForMonth()"
+                            class="btn"
+                            style="background-color: #bd5d38;color: #ffffffcc;cursor: pointer;">Generate
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="showOrdersTable">
+            <table class="account-table" id="account_table" style="font-size: 12px;">
+                <thead>
+                <tr>
+                    <th width="3%"></th>
+                    <th width="7%">Date</th>
+                    <th width="10%">Invoice #</th>
+                    <th width="16%">Order #</th>
+                    <th width="6%">SKU #</th>
+                    <th width="7%">Origin</th>
+                    <th width="9%">State</th>
+                    <th width="9%">Desc</th>
+                    <th width="3%" style="text-align:right;">Qty</th>
+                    <th width="7%" style="text-align:right;">Amount</th>
+                    <th width="5%" style="text-align:right;">CGST</th>
+                    <th width="5%" style="text-align:right;">SGST</th>
+                    <th width="5%" style="text-align:right;">IGST</th>
+                    <th width="8%" style="text-align:right;">Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="order in orders_rows track by $index">
+                    <td>{{$index+1}}</td>
+                    <td>{{order['invoice_date']}}</td>
+                    <td>{{order['invoice_no']}}</td>
+                    <td>{{order['order_id']}}</td>
+                    <td>{{order['sku']}}</td>
+                    <td>{{order['origin']}}</td>
+                    <td>{{order['state']}}</td>
+                    <td>{{order['desc_line1'] + ' ' + order['desc_line2']}}</td>
+                    <td style="text-align:right;">{{order['qty']}}</td>
+                    <td style="text-align:right;">{{roundOff(order['amount'])}}</td>
+                    <td style="text-align:right;">{{roundOff(order['cgst_amt'])}}</td>
+                    <td style="text-align:right;">{{roundOff(order['sgst_amt'])}}</td>
+                    <td style="text-align:right;">{{roundOff(order['igst_amt'])}}</td>
+                    <td style="text-align:right;">{{roundOff(order['total_amount'])}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="text-align:right;">{{t_qty}}</td>
+                    <td style="text-align:right;">{{roundOff(t_amnt)}}</td>
+                    <td style="text-align:right;">{{roundOff(t_cgst)}}</td>
+                    <td style="text-align:right;">{{roundOff(t_sgst)}}</td>
+                    <td style="text-align:right;">{{roundOff(t_igst)}}</td>
+                    <td style="text-align:right;">{{roundOff(total_am)}}</td>
+                </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+</section>
